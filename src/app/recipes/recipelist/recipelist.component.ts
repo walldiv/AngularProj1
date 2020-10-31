@@ -11,7 +11,7 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipelistComponent implements OnInit {
   //copy of recipes array from RecipeService
-  recipes: Recipe[] = []
+  recipes: Recipe[] = [];
 
   constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute) { }
 

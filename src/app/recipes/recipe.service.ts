@@ -12,21 +12,15 @@ export class RecipeService {
   constructor(private shoppingListService: ShoppingListService) {
   }
 
-  recipes: Recipe[] = [
-    new Recipe('Tacos', 'Carne Asada Tacos', 'https://www.goya.com/media/4124/carne-asada-tacos1.jpg',
-    [
-      new Ingredient('White Corn Tortillas', 1), new Ingredient('Skirt Steak Marinated', 1),
-      new Ingredient('Avacados', 1), new Ingredient('Monterey Jack Cheese', 1)
-    ]),
-    new Recipe('Meatloaf', 'Italian at its finest!', 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2010/4/13/0/GC_good-eats-meatloaf_s4x3.jpg.rend.hgtvcom.826.620.suffix/1380061114628.jpeg',
-    [
-      new Ingredient('Ground Chuck', 1), new Ingredient('Onions', 1),
-      new Ingredient('Eggs', 1), new Ingredient('Seasoning', 1)
-    ])
-  ];
+  recipes: Recipe[];
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesSubj.next(this.recipes.slice());
+  }
 
   getRecipes() {
-    return this.recipes.slice();
+    return (this.recipes != null) ? this.recipes.slice() : this.recipes;
   }
 
   getRecipe(id: number) {
