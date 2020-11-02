@@ -9,7 +9,12 @@
       <li class="mr-2 nav-item" ><a class="nav-link" routerLink="/shoppinglist" routerLinkActive="active">SHOPPING LIST</a></li>
     </ul>
     <ul class="nav navbar-nav">
-      <div class="btn-group" appDropdown>
+        <li class="mr-2 nav-item" ><a class="nav-link" routerLink="/auth" routerLinkActive="active" *ngIf="!loggedUser">LOGIN</a></li>
+      <div class="col-xs-12" *ngIf="loggedUser">
+        <p class="mr-2">Welcome back {{ loggedUser.email }}</p>
+        <a class="" (click)="onLogout()">LOGOUT</a>
+      </div>
+      <div class="btn-group" appDropdown *ngIf="loggedUser">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">MANAGE<span class="caret"></span></button>
         <div class="dropdown-menu dropdown-menu-right open">
           <a class="dropdown-item" (click)="onSaveData()" >SAVE DATA</a>
